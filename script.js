@@ -30,7 +30,7 @@ const roles = [
   'Cybersecurity Enthusiast',
   'AI & ML Explorer',
   'Fullstack Developer',
-  'Webapp devoloper',
+  'Web APP devoloper',
   'Marketing Intern @ DeepL',
   'Content Creator'
 ];
