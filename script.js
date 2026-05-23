@@ -23,3 +23,43 @@ window.addEventListener('load', () => {
     document.getElementById('loader').classList.add('hidden');
   }, 1800);
 });
+
+// TYPING ANIMATION
+const roles = [
+  'CS Undergraduate @ IIT',
+  'Cybersecurity Enthusiast',
+  'AI & ML Explorer',
+  'Flutter Developer',
+  'Marketing Intern @ DeepL',
+  'Content Creator'
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
+const typedEl = document.getElementById('typed-text');
+
+function type() {
+  const current = roles[roleIndex];
+
+  if (!deleting) {
+    typedEl.textContent = current.slice(0, charIndex + 1);
+    charIndex++;
+    if (charIndex === current.length) {
+      deleting = true;
+      setTimeout(type, 1500);
+      return;
+    }
+  } else {
+    typedEl.textContent = current.slice(0, charIndex - 1);
+    charIndex--;
+    if (charIndex === 0) {
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+    }
+  }
+
+  setTimeout(type, deleting ? 50 : 100);
+}
+
+type();
