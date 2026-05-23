@@ -136,17 +136,9 @@ nav {
 /* HAMBURGER */
 .menu-toggle {
   display: none;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
-  font-size: 1.3rem;
-  color: var(--text);
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border); 
-
+  font-size: 1.5rem;
+  color: var(--text);  
 }
 
 /* =========================
