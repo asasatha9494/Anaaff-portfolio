@@ -885,3 +885,7 @@ footer {
     display: none;
   }
 }
+
+.nav-links a.active {
+  color: var(--accent);
+}
