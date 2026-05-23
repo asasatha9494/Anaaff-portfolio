@@ -29,7 +29,8 @@ const roles = [
   'CS Undergraduate @ IIT',
   'Cybersecurity Enthusiast',
   'AI & ML Explorer',
-  'Flutter Developer',
+  'Fullstack Developer',
+  'Webapp devoloper',
   'Marketing Intern @ DeepL',
   'Content Creator'
 ];

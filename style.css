@@ -797,3 +797,45 @@ footer {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+/* PROJECT LINK */
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 1rem;
+  border-radius: 3px;
+  border: 1px solid rgba(0,255,136,0.25);
+  background: rgba(0,255,136,0.05);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,255,136,0.08);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.project-link:hover::before {
+  transform: translateX(0);
+}
+
+.project-link:hover {
+  border-color: rgba(0,255,136,0.6);
+  color: var(--accent);
+  box-shadow: 0 0 16px rgba(0,255,136,0.15),
+              inset 0 0 16px rgba(0,255,136,0.05);
+  transform: translateY(-1px);
+}
