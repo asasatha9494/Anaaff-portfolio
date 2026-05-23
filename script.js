@@ -1,12 +1,13 @@
 // CURSOR
 const cursor = document.getElementById('cursor');
-
-document.addEventListener('mousemove', e => {
-  if (window.innerWidth > 768) {
-    cursor.style.left = e.clientX - 4 + 'px';
-    cursor.style.top = e.clientY - 4 + 'px';
-  }
-});
+if (cursor) {
+  document.addEventListener('mousemove', e => {
+    if (window.innerWidth > 768) {
+      cursor.style.left = e.clientX - 4 + 'px';
+      cursor.style.top = e.clientY - 4 + 'px';
+    }
+  });
+}
 
 // SCROLL REVEAL
 const reveals = document.querySelectorAll('.reveal');
@@ -78,6 +79,7 @@ function type() {
 
   }
 
+  const speed = deleting ? 50:100
   setTimeout(type, deleting ? 50 : 100);
 
 }
@@ -96,7 +98,7 @@ window.addEventListener("scroll", () => {
 
     const sectionTop = section.offsetTop;
 
-    if (scrollY >= sectionTop - 200) {
+    if (window.scrollY >= sectionTop - 200) {
       current = section.getAttribute("id");
     }
 
@@ -130,5 +132,16 @@ navLinks.forEach(link => {
   link.addEventListener("click", () => {
     navMenu.classList.remove("active");
   });
+
+});
+
+document.addEventListener("click", (e) => {
+
+  if (
+    !menuToggle.contains(e.target) &&
+    !navMenu.contains(e.target)
+  ) {
+    navMenu.classList.remove("active");
+  }
 
 });
