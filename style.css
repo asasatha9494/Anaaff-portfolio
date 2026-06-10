@@ -323,6 +323,59 @@ h2 {
   }
 }
 
+.hero-container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:4rem;
+  width:100%;
+}
+
+.hero-content{
+  flex:1;
+}
+
+.hero-image{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  position:relative;
+}
+
+.hero-image::before{
+  content:"";
+  position:absolute;
+
+  width:420px;
+  height:520px;
+
+  border-radius:30px;
+
+  background:rgba(255,255,255,0.05);
+
+  backdrop-filter:blur(20px);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  box-shadow:
+    0 0 50px rgba(0,255,136,0.15);
+
+  z-index:0;
+}
+
+.hero-image img{
+  position:relative;
+  z-index:1;
+
+  width:100%;
+  max-width:450px;
+
+  object-fit:contain;
+
+  filter:
+    drop-shadow(0 0 30px rgba(0,255,136,0.25));
+}
+
 /* HERO BUTTONS */
 .hero-cta {
   display: flex;
@@ -1152,4 +1205,21 @@ footer {
     filter: blur(40px);
     opacity: 0.6;
   }
+}
+
+.hero-container{
+  flex-direction:column;
+}
+
+.hero-image{
+  order:-1;
+}
+
+.hero-image::before{
+  width:280px;
+  height:350px;
+}
+
+.hero-image img{
+  max-width:280px;
 }
