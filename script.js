@@ -79,8 +79,8 @@ function type() {
 
   }
 
-  const speed = deleting ? 50:100
-  setTimeout(type, deleting ? 50 : 100);
+  const speed = deleting ? 50 : 100
+  setTimeout(type, speed);
 
 }
 
