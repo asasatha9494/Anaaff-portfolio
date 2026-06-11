@@ -1,12 +1,21 @@
 // CURSOR
 const cursor = document.getElementById('cursor');
+
 if (cursor) {
-  document.addEventListener('mousemove', e => {
-    if (window.innerWidth > 768) {
+
+  if (window.matchMedia("(hover: none)").matches) {
+
+    cursor.style.display = "none";
+
+  } else {
+
+    document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX - 4 + 'px';
       cursor.style.top = e.clientY - 4 + 'px';
-    }
-  });
+    });
+
+  }
+
 }
 
 // SCROLL REVEAL
