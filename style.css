@@ -356,8 +356,8 @@ h2 {
   content: "";
   position: absolute;
 
-  width: 420px;
-  height: 520px;
+  width: min(420px,90vw);
+  height: min(520px, 75vh);
 
   border-radius: 50px;
 
@@ -862,7 +862,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 1rem;
 
   padding: 2rem 3rem;
@@ -1224,7 +1224,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    order: 1;
   }
 
   .hero-image-wrapper {
@@ -1234,8 +1233,8 @@ footer {
   }
 
   .hero-image-wrapper::before {
-    width: 280px;
-    height: 350px;
+    width: min(280px, 80vw);
+    height: min(350px, 60vh);
     border-radius: 35px;
   }
 
@@ -1262,4 +1261,46 @@ footer {
     justify-content: center;
   }
 
+}
+
+/* LANDSCAPE PHONE FIX */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+
+  .hero-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .hero-left {
+    text-align: left;
+    flex: 1;
+  }
+
+  .hero-right {
+    flex: 1;
+    order: 0;
+  }
+
+  .hero-tag,
+  .typed-wrapper,
+  .hero-cta,
+  .hero-stats {
+    justify-content: flex-start;
+  }
+
+  .hero-image {
+    max-width: 220px;
+  }
+
+  .hero-image-wrapper::before {
+    width: 240px;
+    height: 300px;
+  }
+
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
