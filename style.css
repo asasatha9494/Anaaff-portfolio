@@ -351,11 +351,12 @@ h2 {
 .hero-image-wrapper {
   position: relative;
   width: 100%;
-  max-width: 620px;
+  max-width: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-40px);
+  transform: translateY(-100px);
+
 }
 
 .hero-image {
@@ -367,9 +368,8 @@ h2 {
 
   object-fit: contain;
 
-
-
   filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.25));
+  
 }
 
 /* HERO BUTTONS */
@@ -458,8 +458,6 @@ section {
   position: relative;
   z-index: 1;
   padding: 7rem 3rem;
-  max-width: 1200px;
-  margin-inline: auto;
 }
 
 .section-tag {
@@ -981,13 +979,15 @@ footer {
   }
 
   .hero-left {
+    flex: 1;
     max-width: 100%;
     min-width: 0;
   }
 
   .hero-right {
+    flex: 1 1 420px;
     width: 100%;
-    min-width: 0;
+    min-width: 300px;
   }
 
   .hero-tag,
