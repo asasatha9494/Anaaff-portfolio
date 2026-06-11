@@ -172,8 +172,9 @@ nav {
   display: flex;
   align-items: center;
   position: relative;
-  overflow: hidden;
-  padding: 8rem 3rem 4rem;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding: 7rem 3rem 4rem;
 }
 
 .hero-grid-bg {
@@ -335,11 +336,13 @@ h2 {
 .hero-left {
   flex: 1;
   max-width: 650px;
+  min-width: 300;
 
 }
 
 .hero-right {
-  flex: 1;
+  flex: 1 1 420px;
+  min-width: 300;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -347,40 +350,24 @@ h2 {
 
 .hero-image-wrapper {
   position: relative;
+  width: 100%;
+  max-width: 620px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.hero-image-wrapper::before {
-  content: "";
-  position: absolute;
-
-  width: min(420px,90vw);
-  height: min(520px, 75vh);
-
-  border-radius: 50px;
-
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  box-shadow: 0 0 50px rgba(0, 255, 136, 0.15);
-
-  z-index: 0;
+  transform: translateY(-40px);
 }
 
 .hero-image {
-  position: relative;
-  z-index: 1;
-
   width: 100%;
-  max-width: 550px;
+  height: auto;
+
+  max-width: 620px;
+
 
   object-fit: contain;
 
-  border-radius: 0;
+
 
   filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.25));
 }
@@ -446,6 +433,9 @@ h2 {
   padding-top: 3rem;
 
   border-top: 1px solid var(--border);
+
+  width: fit-content;
+  max-width: 100%;
 }
 
 .stat-num {
@@ -468,6 +458,8 @@ section {
   position: relative;
   z-index: 1;
   padding: 7rem 3rem;
+  max-width: 1200px;
+  margin-inline: auto;
 }
 
 .section-tag {
@@ -973,6 +965,48 @@ footer {
   }
 }
 
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+@media screen and (max-width: 1100px) {
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-left {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .hero-right {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-tag,
+  .typed-wrapper,
+  .hero-cta,
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-image-wrapper {
+    width: min(450px, 80vw);
+    transform: translateY(0);
+  }
+
+  .hero-image {
+    max-width: 450px;
+  }
+}
+
 /* =========================================
    MOBILE RESPONSIVE — FINAL FIX
 ========================================= */
@@ -1193,7 +1227,7 @@ footer {
 
   /* CONTACT */
   .contact-link {
-    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   /* FOOTER */
@@ -1224,23 +1258,20 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 0;
   }
 
   .hero-image-wrapper {
     position: relative;
     display: flex;
     justify-content: center;
-  }
-
-  .hero-image-wrapper::before {
-    width: min(280px, 80vw);
-    height: min(350px, 60vh);
-    border-radius: 35px;
+    width: min(320px, 85vw);
+    height: auto;
   }
 
   .hero-image {
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
     height: auto;
   }
 
@@ -1289,13 +1320,12 @@ footer {
     justify-content: flex-start;
   }
 
-  .hero-image {
-    max-width: 220px;
+  .hero-image-wrapper {
+    transform: translateY(0);
   }
 
-  .hero-image-wrapper::before {
-    width: 240px;
-    height: 300px;
+  .hero-image {
+    max-width: 240px;
   }
 
   footer {
