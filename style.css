@@ -369,7 +369,7 @@ h2 {
   object-fit: contain;
 
   filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.25));
-  
+
 }
 
 /* HERO BUTTONS */
@@ -961,6 +961,44 @@ footer {
   to {
     width: 100%;
   }
+}
+
+.signature-section {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+}
+
+.signature-name {
+  display: inline-block;
+  width: fit-content;
+  font-family: 'Alex Brush', cursive;
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+  transition: 0.3s ease;
+
+
+  text-shadow:
+    0 0 10px rgba(0, 255, 136, 0.35),
+    0 0 25px rgba(0, 255, 136, 0.15);
+}
+
+.signature-name:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.25);
+}
+
+.signature-subtitle {
+  margin-top: 1rem;
+
+  color: var(--muted);
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
 }
 
 /* =========================
