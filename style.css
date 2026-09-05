@@ -289,7 +289,7 @@ h2 {
 
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.15rem);
-  font-weight: 300;
+  font-weight: 3;
 }
 
 .hero-sub strong {
@@ -336,13 +336,13 @@ h2 {
 .hero-left {
   flex: 1;
   max-width: 650px;
-  min-width: 300;
+  min-width: 300px;
 
 }
 
 .hero-right {
   flex: 1 1 420px;
-  min-width: 300;
+  min-width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -906,59 +906,538 @@ footer {
    LOADING SCREEN
    (UNCHANGED)
 ========================= */
+/* =========================
+   SYSTEM BOOT LOADER
+========================= */
+
 #loader {
   position: fixed;
   inset: 0;
-  background: #09090b;
-  z-index: 9999;
+  z-index: 99999;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
+
+  background: #09090b;
+  color: var(--text);
+
+  overflow: hidden;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.7s ease,
+    visibility 0.7s ease;
 }
 
+/* Loader disappears */
 #loader.hidden {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 
-.loader-inner {
+
+/* =========================
+   BOOT CONTAINER
+========================= */
+
+.boot-container {
+  width: min(720px, 85vw);
+
+  font-family: 'JetBrains Mono', monospace;
+
+  position: relative;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.boot-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  color: var(--text);
+
+  font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  opacity: 0;
+  animation: bootFadeIn 0.5s ease forwards;
+}
+
+.boot-version {
+  margin-left: auto;
+
+  color: var(--muted);
+
+  font-size: 0.65rem;
+}
+
+
+/* Green status dot */
+
+.boot-status-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  box-shadow:
+    0 0 8px rgba(0, 255, 136, 0.7),
+    0 0 18px rgba(0, 255, 136, 0.3);
+
+  animation: bootPulse 1.2s ease-in-out infinite;
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.boot-line {
+  width: 0;
+  height: 1px;
+
+  margin: 1rem 0 2rem;
+
+  background: rgba(0, 255, 136, 0.3);
+
+  animation: bootLine 0.8s ease forwards;
+  animation-delay: 0.15s;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.boot-title {
+  margin-bottom: 1.5rem;
+
+  color: var(--accent);
+
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  opacity: 0;
+
+  animation: bootFadeIn 0.5s ease forwards;
+  animation-delay: 0.35s;
+}
+
+
+/* =========================
+   BOOT MESSAGES
+========================= */
+
+.boot-messages {
   display: flex;
   flex-direction: column;
+
+  gap: 0.75rem;
+
+  min-height: 145px;
+}
+
+.boot-message {
+  display: flex;
   align-items: center;
-  gap: 1.5rem;
+
+  gap: 0.45rem;
+
+  color: var(--muted);
+
+  font-size: clamp(0.65rem, 1.5vw, 0.78rem);
+
+  opacity: 0;
+
+  transform: translateX(-10px);
+
+  animation: bootMessage 0.45s ease forwards;
 }
 
-.loader-logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 3rem;
-  color: #f4f4f5;
-  letter-spacing: -0.04em;
+
+/* Each message appears separately */
+
+.boot-message:nth-child(1) {
+  animation-delay: 0.65s;
 }
 
-.loader-logo span {
-  color: #00ff88;
+.boot-message:nth-child(2) {
+  animation-delay: 1.2s;
 }
 
-.loader-bar {
-  width: 120px;
+.boot-message:nth-child(3) {
+  animation-delay: 1.75s;
+}
+
+.boot-message:nth-child(4) {
+  animation-delay: 2.3s;
+}
+
+.boot-message:nth-child(5) {
+  animation-delay: 2.85s;
+}
+
+
+/* [ ] */
+
+.boot-symbol {
+  color: var(--muted);
+}
+
+
+/* OK */
+
+.boot-check {
+  color: var(--accent);
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.boot-progress {
+  width: 100%;
   height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
+
+  margin-top: 2rem;
+
   overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border-radius: 999px;
 }
 
-.loader-fill {
+.boot-progress-fill {
+  width: 0;
   height: 100%;
-  width: 0%;
-  background: #00ff88;
-  border-radius: 2px;
-  animation: loadFill 1.5s ease forwards;
+
+  background: var(--accent);
+
+  box-shadow:
+    0 0 10px rgba(0, 255, 136, 0.7);
+
+  animation: bootProgress 3.5s ease forwards;
 }
 
-@keyframes loadFill {
+
+/* =========================
+   SYSTEM READY
+========================= */
+
+.boot-ready {
+  margin-top: 1rem;
+
+  color: var(--muted);
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+
+  letter-spacing: 0.1em;
+
+  opacity: 0;
+
+  animation: bootFadeIn 0.5s ease forwards;
+  animation-delay: 3.45s;
+}
+
+.boot-ready span {
+  color: var(--accent);
+}
+
+
+/* =========================
+   AS LOGO
+========================= */
+
+.boot-logo {
+  margin-top: 2.5rem;
+
+  text-align: right;
+
+  font-family: 'Syne', sans-serif;
+
+  font-size: clamp(3rem, 8vw, 5.5rem);
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: -0.06em;
+
+  color: var(--text);
+
+  opacity: 0;
+
+  transform: scale(0.9);
+
+  animation: bootLogo 0.7s ease forwards;
+  animation-delay: 3.55s;
+}
+
+.boot-logo span {
+  color: var(--accent);
+
+  text-shadow:
+    0 0 10px rgba(0, 255, 136, 0.6),
+    0 0 30px rgba(0, 255, 136, 0.25);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes bootFadeIn {
+  from {
+    opacity: 0;
+  }
+
   to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes bootLine {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+
+@keyframes bootMessage {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes bootProgress {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+
+@keyframes bootLogo {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+@keyframes bootPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.75);
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 768px) {
+
+  #loader {
+    padding: 1.5rem;
+  }
+
+  .boot-container {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .boot-header {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  .boot-version {
+    font-size: 0.55rem;
+  }
+
+  .boot-line {
+    margin: 0.8rem 0 1.5rem;
+  }
+
+  .boot-title {
+    margin-bottom: 1.25rem;
+
+    font-size: 0.9rem;
+  }
+
+  .boot-messages {
+    gap: 0.65rem;
+
+    min-height: 135px;
+  }
+
+  .boot-message {
+    font-size: 0.62rem;
+
+    gap: 0.35rem;
+
+    white-space: normal;
+  }
+
+  .boot-progress {
+    margin-top: 1.5rem;
+  }
+
+  .boot-ready {
+    margin-top: 0.8rem;
+
+    font-size: 0.58rem;
+  }
+
+  .boot-logo {
+    margin-top: 2rem;
+
+    text-align: center;
+
+    font-size: clamp(3.5rem, 20vw, 5rem);
+  }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media screen and (max-width: 380px) {
+
+  #loader {
+    padding: 1.25rem;
+  }
+
+  .boot-header {
+    font-size: 0.56rem;
+  }
+
+  .boot-message {
+    font-size: 0.57rem;
+  }
+
+  .boot-messages {
+    min-height: 125px;
+  }
+
+  .boot-logo {
+    margin-top: 1.5rem;
+  }
+}
+
+
+/* =========================
+   LANDSCAPE PHONES
+========================= */
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+
+  #loader {
+    align-items: flex-start;
+
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+
+  .boot-container {
+    margin: auto;
+  }
+
+  .boot-messages {
+    min-height: 120px;
+    gap: 0.45rem;
+  }
+
+  .boot-logo {
+    margin-top: 1.5rem;
+    font-size: 3rem;
+  }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  #loader,
+  .boot-header,
+  .boot-line,
+  .boot-title,
+  .boot-message,
+  .boot-progress-fill,
+  .boot-ready,
+  .boot-logo,
+  .boot-status-dot {
+    animation: none;
+    transition: none;
+  }
+
+  .boot-header,
+  .boot-title,
+  .boot-message,
+  .boot-ready,
+  .boot-logo {
+    opacity: 1;
+    transform: none;
+  }
+
+  .boot-line {
+    width: 100%;
+  }
+
+  .boot-progress-fill {
     width: 100%;
   }
 }

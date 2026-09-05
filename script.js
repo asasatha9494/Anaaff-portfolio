@@ -34,12 +34,17 @@ const observer = new IntersectionObserver(entries => {
 
 reveals.forEach(el => observer.observe(el));
 
-// LOADING SCREEN
+// SYSTEM BOOT LOADER
 window.addEventListener('load', () => {
 
+  const loader = document.getElementById('loader');
+
+  if (!loader) return;
+
+  // Give the boot animation enough time to finish
   setTimeout(() => {
-    document.getElementById('loader').classList.add('hidden');
-  }, 1800);
+    loader.classList.add('hidden');
+  }, 4000);
 
 });
 
