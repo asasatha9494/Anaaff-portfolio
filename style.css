@@ -2209,3 +2209,45 @@ footer {
   }
 
 }
+
+/* =========================================
+   NAV LINK HOVER JUMP
+========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .nav-links a {
+        display: inline-block;
+        transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+        animation: navJump 0.35s ease;
+        color: var(--accent);
+    }
+
+}
+
+@keyframes navJump {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-5px);
+    }
+
+    55% {
+        transform: translateY(2px);
+    }
+
+    75% {
+        transform: translateY(-2px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
