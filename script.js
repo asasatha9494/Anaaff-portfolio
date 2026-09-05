@@ -1,20 +1,58 @@
 // CURSOR
-const cursor = document.getElementById('cursor');
+// =========================================
+// CUSTOM CURSOR
+// =========================================
 
-if (cursor) {
+const cursor = document.getElementById("cursor");
 
-  if (window.matchMedia("(hover: none)").matches) {
+if (cursor && !window.matchMedia("(hover: none)").matches) {
 
-    cursor.style.display = "none";
+  let mouseX = 0;
+  let mouseY = 0;
 
-  } else {
+  let cursorX = 0;
+  let cursorY = 0;
 
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX - 4 + 'px';
-      cursor.style.top = e.clientY - 4 + 'px';
-    });
+  document.addEventListener("mousemove", (e) => {
+
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+  });
+
+
+  function animateCursor() {
+
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+
+    cursor.style.left = cursorX + "px";
+    cursor.style.top = cursorY + "px";
+
+    requestAnimationFrame(animateCursor);
 
   }
+
+  animateCursor();
+
+
+  // Hover effect
+
+  const hoverElements = document.querySelectorAll(
+    "a, button, input, textarea, .project-card"
+  );
+
+  hoverElements.forEach((element) => {
+
+    element.addEventListener("mouseenter", () => {
+      cursor.classList.add("hover");
+    });
+
+    element.addEventListener("mouseleave", () => {
+      cursor.classList.remove("hover");
+    });
+
+  });
 
 }
 
