@@ -2010,3 +2010,127 @@ footer {
     position: relative;
     z-index: 2;
 }
+
+/* =========================================
+   HERO ENTRANCE ANIMATION
+========================================= */
+
+.hero-left > * {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: heroReveal 0.8s ease forwards;
+}
+
+.hero-left > *:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.hero-left > *:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.hero-left > *:nth-child(3) {
+    animation-delay: 0.45s;
+}
+
+.hero-left > *:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.hero-left > *:nth-child(5) {
+    animation-delay: 0.75s;
+}
+
+.hero-left > *:nth-child(6) {
+    animation-delay: 0.9s;
+}
+
+
+/* Main reveal animation */
+
+@keyframes heroReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Profile image */
+
+.hero-image-wrapper {
+    opacity: 0;
+    transform: translateX(45px) scale(0.96);
+
+    animation: heroImageReveal 1s ease forwards;
+    animation-delay: 0.55s;
+}
+
+@keyframes heroImageReveal {
+
+    from {
+        opacity: 0;
+        transform: translateX(45px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE HERO ANIMATION
+========================================= */
+
+@media (max-width: 768px) {
+
+    .hero-left > * {
+        transform: translateY(18px);
+    }
+
+    .hero-image-wrapper {
+        transform: translateY(25px) scale(0.97);
+        animation-name: heroImageMobileReveal;
+    }
+
+}
+
+@keyframes heroImageMobileReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-left > *,
+    .hero-image-wrapper {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+
+}
