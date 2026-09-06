@@ -2140,56 +2140,475 @@ footer {
 
 /* Profile image */
 
-.hero-image-wrapper {
-  opacity: 0;
-  transform: translateX(45px) scale(0.96);
+/* =========================================
+   CYBER REVEAL — HERO IMAGE
+   Loader → Green Glow → Faded Image → Clear
+========================================= */
 
-  animation: heroImageReveal 1s ease forwards;
-  animation-delay: 0.55s;
+.hero-image-wrapper {
+  position: relative;
+
+  /* Keep your existing desktop position */
+  transform: translateY(-100px);
+
+  /* Make sure the glow can appear before the image */
+  opacity: 1;
 }
 
-@keyframes heroImageReveal {
 
-  from {
+/* =========================================
+   GREEN FIRE / PLASMA ENERGY
+========================================= */
+
+/* =========================================
+   REALISTIC GREEN PLASMA FIRE
+========================================= */
+
+.hero-image-wrapper::before {
+  content: "";
+
+  position: absolute;
+  inset: -45px;
+
+  border-radius: 48% 52% 45% 55%;
+
+  background:
+    conic-gradient(from 0deg,
+      transparent 0deg,
+      rgba(0, 255, 136, 0.15) 25deg,
+      rgba(0, 255, 136, 0.9) 45deg,
+      transparent 70deg,
+      rgba(0, 255, 136, 0.5) 110deg,
+      transparent 145deg,
+      rgba(0, 255, 136, 0.85) 180deg,
+      transparent 215deg,
+      rgba(0, 255, 136, 0.4) 255deg,
+      transparent 290deg,
+      rgba(0, 255, 136, 0.9) 325deg,
+      transparent 350deg);
+
+  filter:
+    blur(10px) drop-shadow(0 0 15px rgba(0, 255, 136, 0.8)) drop-shadow(0 0 35px rgba(0, 255, 136, 0.4));
+
+  opacity: 0;
+
+  transform:
+    scale(0.65) rotate(-15deg);
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  animation:
+    plasmaFire 1.2s ease-out 4.75s forwards;
+}
+
+
+/* =========================================
+   INNER FIRE / HOT CORE
+========================================= */
+
+.hero-image-wrapper::after {
+  content: "";
+
+  position: absolute;
+  inset: -20px;
+
+  background:
+    radial-gradient(ellipse at 50% 10%,
+      rgba(120, 255, 190, 0.9) 0%,
+      rgba(0, 255, 136, 0.55) 8%,
+      transparent 30%),
+
+    radial-gradient(ellipse at 90% 35%,
+      rgba(0, 255, 136, 0.9) 0%,
+      rgba(0, 255, 136, 0.35) 10%,
+      transparent 28%),
+
+    radial-gradient(ellipse at 15% 55%,
+      rgba(0, 255, 136, 0.85) 0%,
+      rgba(0, 255, 136, 0.3) 12%,
+      transparent 30%),
+
+    radial-gradient(ellipse at 75% 85%,
+      rgba(0, 255, 136, 0.8) 0%,
+      rgba(0, 255, 136, 0.25) 12%,
+      transparent 30%);
+
+  filter: blur(8px);
+
+  opacity: 0;
+
+  transform: scale(0.7);
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  animation:
+    fireCore 1.15s ease-out 4.78s forwards;
+}
+
+
+/* =========================================
+   MAIN PLASMA FIRE
+========================================= */
+
+@keyframes plasmaFire {
+
+  0% {
     opacity: 0;
-    transform: translateX(45px) scale(0.96);
+
+    transform:
+      scale(0.55) rotate(-20deg);
+
+    filter:
+      blur(20px) drop-shadow(0 0 10px rgba(0, 255, 136, 0.2));
   }
 
-  to {
+  15% {
     opacity: 1;
-    transform: translateX(0) scale(1);
+
+    transform:
+      scale(0.78) rotate(8deg);
+
+    filter:
+      blur(8px) drop-shadow(0 0 20px rgba(0, 255, 136, 0.9)) drop-shadow(0 0 45px rgba(0, 255, 136, 0.5));
+  }
+
+  30% {
+    opacity: 1;
+
+    transform:
+      scale(0.95) rotate(-5deg);
+
+    filter:
+      blur(6px) drop-shadow(0 0 25px rgba(0, 255, 136, 1)) drop-shadow(0 0 55px rgba(0, 255, 136, 0.5));
+  }
+
+  50% {
+    opacity: 0.9;
+
+    transform:
+      scale(1.08) rotate(7deg);
+
+    filter:
+      blur(9px) drop-shadow(0 0 30px rgba(0, 255, 136, 0.9)) drop-shadow(0 0 65px rgba(0, 255, 136, 0.35));
+  }
+
+  70% {
+    opacity: 0.65;
+
+    transform:
+      scale(1.18) rotate(-4deg);
+
+    filter:
+      blur(13px) drop-shadow(0 0 25px rgba(0, 255, 136, 0.7));
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(1.35) rotate(10deg);
+
+    filter:
+      blur(22px) drop-shadow(0 0 10px rgba(0, 255, 136, 0));
+  }
+}
+
+
+/* =========================================
+   FIRE CORE BURST
+========================================= */
+
+@keyframes fireCore {
+
+  0% {
+    opacity: 0;
+
+    transform: scale(0.5);
+  }
+
+  15% {
+    opacity: 1;
+
+    transform: scale(0.8);
+  }
+
+  35% {
+    opacity: 0.95;
+
+    transform: scale(1);
+  }
+
+  55% {
+    opacity: 0.7;
+
+    transform: scale(1.12);
+  }
+
+  75% {
+    opacity: 0.35;
+
+    transform: scale(1.25);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: scale(1.4);
+  }
+}
+
+/* =========================================
+   HERO IMAGE
+========================================= */
+
+.hero-image {
+  position: relative;
+
+  z-index: 2;
+
+  opacity: 0;
+
+  transform: scale(1.08);
+
+  filter:
+    blur(10px) brightness(0) contrast(1.4) drop-shadow(0 0 30px rgba(0, 255, 136, 0.25));
+
+  animation:
+    revealImage 1s cubic-bezier(.16, 1, .3, 1) 4.85s forwards;
+}
+
+
+/* =========================================
+   GREEN GLOW
+   4.75s → 5.65s
+========================================= */
+
+@keyframes energyGlow {
+
+  0% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+
+  25% {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+
+  55% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+
+/* =========================================
+   ENERGY RING
+========================================= */
+
+@keyframes energyRing {
+
+  0% {
+    opacity: 0;
+
+    transform: scale(0.6);
+
+    border-color: rgba(0, 255, 136, 0);
+
+    box-shadow:
+      0 0 15px rgba(0, 255, 136, 0),
+      0 0 35px rgba(0, 255, 136, 0);
+  }
+
+  20% {
+    opacity: 1;
+
+    transform: scale(0.85);
+
+    border-color: rgba(0, 255, 136, 0.8);
+
+    box-shadow:
+      0 0 15px rgba(0, 255, 136, 0.7),
+      0 0 35px rgba(0, 255, 136, 0.4);
+  }
+
+  70% {
+    opacity: 0.6;
+
+    transform: scale(1.05);
+
+    border-color: rgba(0, 255, 136, 0.35);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: scale(1.35);
+
+    border-color: rgba(0, 255, 136, 0);
+  }
+}
+
+
+/* =========================================
+   IMAGE MATERIALIZES
+========================================= */
+
+@keyframes revealImage {
+
+  /* IMAGE NOT VISIBLE */
+  0% {
+    opacity: 0;
+
+    transform: scale(1.08);
+
+    filter:
+      blur(10px) brightness(0) contrast(1.4) drop-shadow(0 0 30px rgba(0, 255, 136, 0.25));
+  }
+
+
+  /* FADED IMAGE SUDDENLY APPEARS */
+  25% {
+    opacity: 0.25;
+
+    transform: scale(1.03);
+
+    filter:
+      blur(7px) brightness(0.25) contrast(1.3) drop-shadow(0 0 20px rgba(0, 255, 136, 0.3));
+  }
+
+
+  /* IMAGE STARTS RESOLVING */
+  50% {
+    opacity: 0.65;
+
+    transform: scale(1.01);
+
+    filter:
+      blur(4px) brightness(0.65) contrast(1.15) drop-shadow(0 0 25px rgba(0, 255, 136, 0.35));
+  }
+
+
+  /* ALMOST CLEAR */
+  75% {
+    opacity: 0.95;
+
+    transform: scale(1.02);
+
+    filter:
+      blur(1px) brightness(1) contrast(1.05) drop-shadow(0 0 35px rgba(0, 255, 136, 0.35));
+  }
+
+
+  /* SMALL SETTLE */
+  88% {
+    opacity: 1;
+
+    transform: scale(0.995);
+  }
+
+
+  /* FINAL IMAGE */
+  100% {
+    opacity: 1;
+
+    transform: scale(1);
+
+    filter:
+      blur(0) brightness(1) contrast(1) drop-shadow(0 0 30px rgba(0, 255, 136, 0.25));
+  }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+  .hero-image-wrapper {
+    transform: translateY(0);
   }
 
 }
 
 
 /* =========================================
-   MOBILE HERO ANIMATION
+   MOBILE
 ========================================= */
 
 @media (max-width: 768px) {
 
-  .hero-left>* {
-    transform: translateY(18px);
+  .hero-image-wrapper {
+    transform: translateY(0);
   }
 
-  .hero-image-wrapper {
-    transform: translateY(25px) scale(0.97);
-    animation-name: heroImageMobileReveal;
+  .hero-image {
+    animation:
+      revealImageMobile 1s cubic-bezier(.16, 1, .3, 1) 4.85s forwards;
   }
 
 }
 
-@keyframes heroImageMobileReveal {
 
-  from {
+/* =========================================
+   MOBILE IMAGE REVEAL
+========================================= */
+
+@keyframes revealImageMobile {
+
+  0% {
     opacity: 0;
-    transform: translateY(25px) scale(0.97);
+
+    transform: scale(1.08);
+
+    filter:
+      blur(8px) brightness(0) drop-shadow(0 0 25px rgba(0, 255, 136, 0.25));
   }
 
-  to {
+  30% {
+    opacity: 0.3;
+
+    transform: scale(1.03);
+
+    filter:
+      blur(6px) brightness(0.25) drop-shadow(0 0 20px rgba(0, 255, 136, 0.3));
+  }
+
+  60% {
+    opacity: 0.75;
+
+    transform: scale(1.02);
+
+    filter:
+      blur(2px) brightness(0.8) drop-shadow(0 0 30px rgba(0, 255, 136, 0.3));
+  }
+
+  80% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+
+    transform: scale(0.995);
+
+    filter:
+      blur(0) brightness(1) drop-shadow(0 0 35px rgba(0, 255, 136, 0.3));
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: scale(1);
+
+    filter:
+      blur(0) brightness(1) drop-shadow(0 0 30px rgba(0, 255, 136, 0.25));
   }
 
 }
@@ -2201,11 +2620,25 @@ footer {
 
 @media (prefers-reduced-motion: reduce) {
 
-  .hero-left>*,
   .hero-image-wrapper {
     opacity: 1;
     transform: none;
+  }
+
+  .hero-image {
+    opacity: 1;
+    transform: none;
+
+    filter:
+      drop-shadow(0 0 30px rgba(0, 255, 136, 0.25));
+
     animation: none;
+  }
+
+  .hero-image-wrapper::before,
+  .hero-image-wrapper::after {
+    animation: none;
+    opacity: 0;
   }
 
 }
@@ -2901,4 +3334,49 @@ footer {
 /* Keep the content facing forward */
 .showcase-panel>* {
   backface-visibility: hidden;
+}
+
+/* =========================================
+   HERO IMAGE — FLOATING EFFECT
+========================================= */
+
+.hero-image {
+  border-radius: 20px;
+
+  /* Slightly round the actual image edges */
+  clip-path: inset(0 round 20px);
+
+  /* Start floating only after the reveal finishes */
+  animation:
+    revealImage 1s cubic-bezier(.16, 1, .3, 1) 4.85s forwards,
+    heroFloat 5s ease-in-out 5.85s infinite;
+}
+
+
+/* =========================================
+   FLOATING MOTION
+========================================= */
+
+@keyframes heroFloat {
+
+  0% {
+    translate: 0 0;
+  }
+
+  25% {
+    translate: 0 -8px;
+  }
+
+  50% {
+    translate: 0 0;
+  }
+
+  75% {
+    translate: 0 7px;
+  }
+
+  100% {
+    translate: 0 0;
+  }
+
 }
