@@ -217,49 +217,52 @@
 
   <!-- ABOUT -->
   <section id="about">
-    <div class="container>" <div class="section-tag">about me</div>
-    <h2>Who I am.</h2>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>I'm a <strong>dedicated Computer Science undergraduate</strong> at the Informatics Institute of Technology
-          (IIT), Sri Lanka, reading for a BSc (Hons) degree affiliated with the University of Westminster.</p>
-        <p>My focus areas are <strong>Cybersecurity and Artificial Intelligence</strong> — fields I find endlessly
-          fascinating. I've gained hands-on experience through IEEE workshops, hackathons, and community volunteering at
-          IIT.</p>
-        <p>Outside of university, I'm a <strong>Marketing Intern at DeepL Blockchain Technologies</strong> and a growing
-          <strong>Instagram content creator</strong>, blending tech with creativity. I'm fluent in English, Tamil
-          (native), and Sinhala.
-        </p>
-      </div>
-      <div class="about-details reveal">
-        <div class="detail-row">
-          <span class="detail-icon">location</span>
-          <div class="detail-val">Pottuvil, Sri Lanka</div>
+    <div class="container">
+      <div class="section-tag">about me</div>
+      <h2>Who I am.</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm a <strong>dedicated Computer Science undergraduate</strong> at the Informatics Institute of Technology
+            (IIT), Sri Lanka, reading for a BSc (Hons) degree affiliated with the University of Westminster.</p>
+          <p>My focus areas are <strong>Cybersecurity and Artificial Intelligence</strong> — fields I find endlessly
+            fascinating. I've gained hands-on experience through IEEE workshops, hackathons, and community volunteering
+            at
+            IIT.</p>
+          <p>Outside of university, I'm a <strong>Marketing Intern at DeepL Blockchain Technologies</strong> and a
+            growing
+            <strong>Instagram content creator</strong>, blending tech with creativity. I'm fluent in English, Tamil
+            (native), and Sinhala.
+          </p>
         </div>
-        <div class="detail-row">
-          <span class="detail-icon">education</span>
-          <div class="detail-val">
-            BSc (Hons) Computer Science
-            <small>IIT × University of Westminster · 2024–present</small>
+        <div class="about-details reveal">
+          <div class="detail-row">
+            <span class="detail-icon">location</span>
+            <div class="detail-val">Pottuvil, Sri Lanka</div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">education</span>
+            <div class="detail-val">
+              BSc (Hons) Computer Science
+              <small>IIT × University of Westminster · 2024–present</small>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">work</span>
+            <div class="detail-val">
+              Marketing Intern
+              <small>DeepL Blockchain Technologies</small>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">interests</span>
+            <div class="detail-val">Ethical Hacking · AI · Mobile Dev · Content Creation</div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">email</span>
+            <div class="detail-val">asasatha9494@gmail.com</div>
           </div>
         </div>
-        <div class="detail-row">
-          <span class="detail-icon">work</span>
-          <div class="detail-val">
-            Marketing Intern
-            <small>DeepL Blockchain Technologies</small>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">interests</span>
-          <div class="detail-val">Ethical Hacking · AI · Mobile Dev · Content Creation</div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">email</span>
-          <div class="detail-val">asasatha9494@gmail.com</div>
-        </div>
       </div>
-    </div>
     </div>
   </section>
 
@@ -269,7 +272,7 @@
     <h2>Projects.</h2>
     <div class="projects-grid">
 
-      <div class="project-card reveal">
+      <div class="project-card reveal" data-project="vora">
         <div class="project-num">01 — Mobile</div>
         <img src="assets/images/vora.jpeg" class="project-image" alt="Vora Study App">
         <div class="project-title">VORA — Study Mobile App</div>
@@ -283,7 +286,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal">
+      <div class="project-card reveal" data-project="task-manager">
         <div class="project-num">02 — Desktop</div>
         <div class="project-title">GUI-Based Task Manager</div>
         <p class="project-desc">A desktop task management app built with Python and Tkinter. Features an intuitive GUI
@@ -296,7 +299,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal">
+      <div class="project-card reveal" data-project="environment">
         <div class="project-num">03 — Web</div>
         <div class="project-title">Environmental Conservation Platform</div>
         <p class="project-desc">A responsive web platform aligned with UN SDG 15: Life on Land, promoting environmental
@@ -309,7 +312,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal">
+      <div class="project-card reveal" data-project="surf-del-mar">
         <div class="project-num">04 — Web</div>
         <img src="assets/images/surfdelmar.png" class="project-image">
         <div class="project-title">Surf Del Mar Hotel — Website</div>
@@ -325,7 +328,7 @@
         <a href="https://surfdelmarhotel.com" target="_blank" class="project-link">Visit Site ↗</a>
       </div>
 
-      <div class="project-card reveal">
+      <div class="project-card reveal" data-project="ms-mobile">
         <div class="project-num">05 — Web</div>
         <img src="assets/images/msmobile.png" class="project-image">
         <div class="project-title">MS Mobile — Phone Repair Website</div>
@@ -526,6 +529,112 @@
     <div class="footer-text">Pottuvil, Sri Lanka 🇱🇰</div>
   </footer>
 
+  <!-- =========================================
+     PROJECT SHOWCASE
+========================================= -->
+
+  <div class="project-showcase" id="project-showcase">
+
+    <div class="showcase-backdrop"></div>
+
+    <div class="showcase-panel">
+
+      <!-- CLOSE -->
+      <button class="showcase-close" id="showcase-close">
+        ×
+      </button>
+
+      <!-- TOP -->
+      <div class="showcase-top">
+
+        <div class="showcase-label">
+          / FEATURED PROJECT
+        </div>
+
+        <div class="showcase-number" id="showcase-number">
+          01
+        </div>
+
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="showcase-content">
+
+        <!-- IMAGE -->
+        <div class="showcase-image-container">
+
+          <img id="showcase-image" src="" alt="Project preview">
+
+        </div>
+
+        <!-- DETAILS -->
+        <div class="showcase-details">
+
+          <div class="showcase-category" id="showcase-category">
+            MOBILE APPLICATION
+          </div>
+
+          <h2 id="showcase-title">
+            VORA — Study Mobile App
+          </h2>
+
+          <p class="showcase-description" id="showcase-description">
+            Project description goes here.
+          </p>
+
+          <!-- TECH -->
+          <div class="showcase-tech" id="showcase-tech">
+          </div>
+
+          <!-- FEATURES -->
+          <div class="showcase-features">
+
+            <div class="showcase-feature">
+              <span>01</span>
+              <p>Project Development</p>
+            </div>
+
+            <div class="showcase-feature">
+              <span>02</span>
+              <p>Modern User Interface</p>
+            </div>
+
+            <div class="showcase-feature">
+              <span>03</span>
+              <p>Responsive Experience</p>
+            </div>
+
+            <div class="showcase-feature">
+              <span>04</span>
+              <p>Real-world Solution</p>
+            </div>
+
+          </div>
+
+          <!-- BUTTONS -->
+          <div class="showcase-actions">
+
+            <a href="#" target="_blank" class="btn btn-primary" id="showcase-live">
+              View Live ↗
+            </a>
+
+            <a href="#" target="_blank" class="btn btn-outline" id="showcase-code">
+              View Code ↗
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FLOATING DECORATION -->
+      <div class="showcase-orbit"></div>
+      <div class="showcase-glow"></div>
+
+    </div>
+
+  </div>
   <script src="script.js"></script>
 </body>
 
